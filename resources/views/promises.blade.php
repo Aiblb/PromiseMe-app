@@ -7,8 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+
     @foreach ($promises as $promise)
-        <p>{{$promise}}</p>
+        <p>{{$promise->user->name}}</p>
     @endforeach
+
 </body>
 </html>

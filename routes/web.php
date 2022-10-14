@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Promise;
+use Illuminate\Validation;
+use Illuminate\Validation\Rule;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,7 @@ use App\Models\Promise;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::get('/users', function () {
@@ -28,7 +30,7 @@ Route::get('/users', function () {
 
 Route::get('/promises', function () {
     return view('promises', [
-        'promises' => Promise::all()->where('public', '=', '1')
+        'promises' => Promise::all()->where('public', '=', '1')->sortByDesc('id')
     ]);
 
 });
@@ -38,7 +40,20 @@ Route::get('/login', function (){
     return view('login');
 });
 
+//Register
 Route::post('/login', function (){
-    $data = request();
+    $data = request()->validate([
+        'username' => ['required', 'min:5', 'max:255', Rule::unique('users', 'username')],
+        'password' => 'required'
+    ]);
+
+    //create
+
+    $user = User::create($data);
+
+    auth()->login($user);
+
+    session()->flash('success', 'Your account has been created.');
+
 });
 

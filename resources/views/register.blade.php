@@ -1,7 +1,6 @@
 <x-layout>
 
     <div class="col-12">
-
         <div class="mb-5">
             <h2 class="text-center">Register<br>
                 <small class="text-muted">and join our family!</small>
@@ -19,6 +18,12 @@
 
             <div class="col-12 text-end">
                 <button class="btn btn-outline-primary mt-4" type="submit">Create account</button>
+        <form actions="{{ url('/register') }}" method="POST" class="row g-3 needs-validation" novalidate>
+            @csrf
+            <x-input type="name" label="First name" name="firstname" :required="true" />
+
+            <div class="col-12 text-end">
+                <button class="btn btn-primary" type="submit">Create account</button>
             </div>
         </form>
     </div>

@@ -52,11 +52,22 @@ Route::get('/promises', function () {
 Route::post('/logout', function(){
 
     auth()->logout();
-
     return redirect('/');
 });
 
 //Log In
+Route::get('/register', function (){
+    return view('register');
+});
+
+//Register
+Route::post('/register', function (){
+    $data = request()->validate([
+        'firstname' => 'required',
+        'lastname' => 'required',
+        'username' => ['required', 'min:5', 'max:255', Rule::unique('users', 'username')],
+        'password' => 'required'
+    ]);
 
 
 Route::get('/users', function () {
@@ -66,5 +77,6 @@ Route::get('/users', function () {
 
 });
 
+    //session()->flash('success', 'Your account has been created and you have been logged in.');
 
 

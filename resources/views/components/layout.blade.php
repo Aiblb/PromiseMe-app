@@ -94,13 +94,7 @@
     <div class="container">
         {{ $slot }}
     </div>
-
-    @if (session()->has('success'))
-        <div>
-            <p>{{ session('success')}}</p>
-        </div>
-    @endif
-
+    <x-flashmessage/>
 </body>
 
 </html>

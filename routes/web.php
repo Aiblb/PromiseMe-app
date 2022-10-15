@@ -18,8 +18,46 @@ use Illuminate\Validation\Rule;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('welcome');
 });
+
+//Registration routes
+Route::get('/register', function (){
+    return view('register');
+});
+
+Route::post('/register', function (){
+    $data = request()->validate([
+        'firstname' => 'required',
+        'lastname' => 'required',
+        'username' => ['required', 'min:5', 'max:255', Rule::unique('users', 'username')],
+        'email' => ['required', 'email', 'max:255', Rule::unique('users', 'email')],
+        'password' => 'required|min:5'
+    ]);
+
+    //Creation
+    $user = User::create($data);
+    //LogginIn
+    auth()->login($user);
+    //Send them to Promises page
+    return redirect('/promises');
+});
+
+Route::get('/promises', function () {
+    return view('promises', [
+        'promises' => Promise::all()->where('public', '=', '1')->sortByDesc('id')
+    ]);
+});
+
+Route::post('/logout', function(){
+
+    auth()->logout();
+
+    return redirect('/');
+});
+
+//Log In
+
 
 Route::get('/users', function () {
     return view('users', [
@@ -28,34 +66,5 @@ Route::get('/users', function () {
 
 });
 
-Route::get('/promises', function () {
-    return view('promises', [
-        'promises' => Promise::all()->where('public', '=', '1')->sortByDesc('id')
-    ]);
 
-});
-
-
-Route::get('/register', function (){
-    return view('register');
-});
-
-//Register
-Route::post('/register', function (){
-    $data = request()->validate([
-        'firstname' => 'required',
-        'lastname' => 'required',
-        'username' => ['required', 'min:5', 'max:255', Rule::unique('users', 'username')],
-        'password' => 'required'
-    ]);
-
-    //create
-
-    $user = User::create($data);
-
-    auth()->login($user);
-
-    session()->flash('success', 'Your account has been created and you have been logged in.');
-
-});
 

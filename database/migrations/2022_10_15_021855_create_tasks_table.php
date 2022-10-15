@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('promises', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->string('description');
-            $table->foreignid('user_id');
+            $table->foreignId('promise_id');
             $table->boolean('status');
             $table->timestamps();
-            $table->boolean('public');
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promises');
+        Schema::dropIfExists('tasks');
     }
 };

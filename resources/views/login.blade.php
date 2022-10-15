@@ -1,22 +1,23 @@
 <x-layout>
 
-    <form actions="{{url('/login')}}" method="POST" class="row needs-validation" novalidate>
-        @csrf
-        <div class="col-12">
-            <label for="validationCustom01" class="form-label">First name</label>
-            <input type="text" class="form-control" id="validationCustom01" value="{{ old('name') }}" required>
+    <div class="col-12">
 
-            @error('name')
-                <div class="invalid-feedback mb-3">
-                    {{ $message }}
-                </div>
-            @enderror
-
-
-        <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+        <div class="mb-5">
+            <h2 class="text-center">Log in<br>
+                <small class="text-muted">and stay connected!</small>
+            </h2>
         </div>
-    </form>
 
+        <form actions="{{ url('/login') }}" method="POST" class="row g-3 needs-validation" novalidate>
+            @csrf
+
+            <x-input type="text" label="Username" name="username" :required="true" />
+            <x-input type="password" label="Password" name="password" :required="true" />
+
+            <div class="col-12 text-end">
+                <button class="btn btn-outline-primary mt-4" type="submit">Log In</button>
+            </div>
+        </form>
+    </div>
 
 </x-layout>

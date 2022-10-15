@@ -47,4 +47,8 @@ class User extends Authenticatable
     public function promises(){
         return $this->hasMany(Promise::class);
     }
+
+    public function setPasswordAttribute($password){
+        $this->attributes['password'] = bcrypt($password);
+    }
 }

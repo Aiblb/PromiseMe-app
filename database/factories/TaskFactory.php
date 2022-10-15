@@ -3,12 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
+use App\Models\Promise;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Promise>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Task>
  */
-class PromiseFactory extends Factory
+class TaskFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,11 +18,9 @@ class PromiseFactory extends Factory
     public function definition()
     {
         return [
-            'title' => fake()->sentence(),
             'description' => fake()->paragraph(),
-            'public' => fake()->boolean(),
-            'user_id' => User::factory(),
-            'status' => '0'
+            'promise_id' => Promise::factory(),
+            'status' => fake()->boolean()
         ];
     }
 }

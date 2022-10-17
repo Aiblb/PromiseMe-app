@@ -32,7 +32,7 @@
 
                 <div class="col-1 col-xs-2">
                     <a class="navbar-brand p-0" href="#">
-                        <img src="{{ url('img/Logo.png') }}" width="70" height="70" class="me-2">
+                        <img src="{{ url('img/iconodos.png') }}" width="70" height="70" class="me-2">
                     </a>
                 </div>
 

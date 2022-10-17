@@ -1,3 +1,3 @@
 <x-layout>
-auth()
+auth() 
 </x-layout>

@@ -21,6 +21,7 @@
             </div>
         </form>
     </div>
-
+    
+    <x-flashmessage/>
 
 </x-layout>

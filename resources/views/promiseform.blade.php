@@ -1,13 +1,26 @@
 <x-layout>
 
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label position-static d-grid gap-1 p-2 rounded-3 mx-0">Tittle</label>
-  <input type="text" class="form-control position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px" id="exampleFormControlInput1" placeholder="">
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-  <textarea class="form-control position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
+    <div class="col-12">
+        <div class="mb-5">
+            <h2 class="text-center">Register<br>
+                <small class="text-muted">and join our family!</small>
+            </h2>
+        </div>
+
+        <form actions="{{ url('/promise') }}" method="POST" class="row g-3 needs-validation" novalidate>
+            @csrf
+
+            <x-input type="text" label="Title" name="title" :required="true" />
+            <x-input type="text" label="Description" name="description" :required="true" />
+
+            <div class="col-12 text-end">
+                <button class="btn btn-outline-primary mt-4" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    
+    <x-flashmessage/>
+
 </x-layout>
 
-<a class="btn btn-primary" href="#" role="button" class="d-grid gap-2 p-3" margin=50% >Submit</a>
+

@@ -1,3 +1,7 @@
+body{
+    background-color: #f2ce9e !important;
+}
+
 .promiseme101{
     position: absolute;
     width: 408px;
@@ -11,7 +15,7 @@
     width: 600px;
     height: 550px;
     left: 500px;
-    top: 255px;      
+    top: 255px;
 }
 
 .btn{
@@ -19,11 +23,7 @@
     width: 150px;
     height: 50px;
     left: 500px;
-    top: 300px; 
-}
-
-.body{
-    background: #f2ce9e !important; 
+    top: 300px;
 }
 
 .h2{
@@ -74,7 +74,7 @@
     height: 112px;
     left: 1306px;
     top: 13px;
-    border-radius: 256px;     
+    border-radius: 256px;
 }
 
 #boton.perfil{

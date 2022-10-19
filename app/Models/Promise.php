@@ -9,7 +9,7 @@ class Promise extends Model
 {
     use HasFactory;
 
-    protected $protected = ['id'];
+    protected $guarded = ['id'];
 
     //needs to be call as an attribute
     public function user()

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Promise;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Validation;
 use Illuminate\Validation\Rule;
@@ -41,8 +42,26 @@ Route::post('/register', function (){
     //Loggin In
     auth()->login($user);
     //Send them to Promises page
-    return redirect('/promises');
+    return redirect('/promises')->with('success', 'Your account has been created and you have been logged in');
 });
+
+//Create promise route
+Route::post('/promiseform', function () {
+    $promise = request()->validate([
+        'title' => 'required',
+        'description' => 'required'
+    ]);
+
+    //Default values
+    $promise['user_id']= Auth::id();
+    $promise['public'] = true;
+    $promise['status'] = false;
+
+    //Cretion of promise
+    Promise::create($promise);
+    return redirect('/promises')->with('success', 'Your promise has been saved successfully');
+})->middleware('auth');
+
 
 Route::get('/promises', function () {
     return view('promises', [

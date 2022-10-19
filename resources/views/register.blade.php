@@ -17,7 +17,7 @@
             <x-input type="password" label="Password" name="password" :required="true" />
 
             <div class="col-12 text-end">
-                <button class="btn btn-outline-primary mt-4" type="submit">Create account</button>
+                <button class="btn btn-outline-primary mt-4" id="btnColor" type="submit">Create account</button>
             </div>
         </form>
     </div>

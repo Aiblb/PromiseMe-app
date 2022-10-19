@@ -45,7 +45,8 @@ Route::post('/register', function (){
     return redirect('/promises')->with('success', 'Your account has been created and you have been logged in');
 });
 
-//Create promise route
+
+//Create promise
 Route::post('/promiseform', function () {
     $promise = request()->validate([
         'title' => 'required',
@@ -69,13 +70,15 @@ Route::get('/promises', function () {
     ]);
 })->middleware('auth');
 
+
 Route::get('/logout', function(){
     auth()->logout();
-    return redirect('/');
+    //Send them to Promises page
+    return redirect('/')->with('success', 'You have been logged out successfully');
 })->middleware('auth');
 
-//Log In
 
+//Log In
 Route::get('/login', function () {
     return view('login');
 })->middleware('guest');
@@ -89,21 +92,24 @@ Route::post('/login', function () {
     //Attemps logs you in and checks password
     if(auth()->attempt($data)){
         session()->regenerate();
-        return redirect('/');
+        //Send them to Promises page
+    return redirect('/promises')->with('success', 'You have been logged in successfully');
     }
     else{
         return back()->withInput()->withErrors(['username' => 'The username provided could not be verified']);
     }
-
-
 })->middleware('guest');
 
 Route::get('/promiseform', function () {
     return view('promiseform');
 })->middleware('auth');
 
+
 Route::get('/account', function () {
-    return view('account');
+    return view('account', [
+    //    'account' => Promise::all()->where('user_id', "=", auth()->id())
+    'account' => Promise::all()
+    ]);
 })->middleware('auth');
 
 

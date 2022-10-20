@@ -4,32 +4,27 @@ body{
 
 #nav{
   background-color: #e4b280;
+  height: 5rem;
 }
 
 #btnColor{
-  background-color: purple;
-  border-color: aqua;
-  color: aliceblue;
+  background-color: #632815;
+  border-color: #632815;
+  color: white;
 }
 
 #btnColor:hover{
-  background-color: black;
-  color: azure;
-  border-color: brown;
+    background-color: #d5552d;
+    border-color: #d5552d;
+    color: white;
 }
 
-.btnFollow{
-  position: absolute;
-  width: 150px;
-  height: 50px;
-  left: 500px;
-  top: 300px;
+.card-title{
+    margin-bottom: 0px !important;
 }
 
-.h2{
-  background: white;
-  margin-bottom: 0px;
-}
+
+
 
 .h2{
     margin-top: 0px;

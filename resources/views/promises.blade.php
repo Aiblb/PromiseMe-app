@@ -9,8 +9,9 @@
                         {{$promise->user->firstname}}
                     </div>
                     <div class="card-body">
-                        <img src="{{url('img/Red-White-Royal-Blue-by-Casey-McQuiston.jpg')}}" class="card-img-top mb-3" alt="...">
+                        <img src="{{url('img/BookExample.jpg')}}" class="card-img-top mb-3" alt="...">
                       <h5 class="card-title">{{$promise->title}}</h5>
+                      <small class="text-muted">{{$promise->created_at->diffForHumans()}}</small>
                     <p class="card-text">{{$promise->description}}</p>
                     </div>
                   </div>

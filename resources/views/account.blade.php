@@ -6,6 +6,8 @@
         <div class="col-md-6 aling-content-center">
             <h1 class="">{{auth()->user()->username}}</h1>
             <p class="">{{auth()->user()->firstname." ".auth()->user()->lastname}}</p>
+            <p>Join date: {{auth()->user()->created_at->diffForHumans()}}</p>
+            <p>Promises count: {{$count}}</p>
         </div>
     </div>
     <div class="row justify-content-center">

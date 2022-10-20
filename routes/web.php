@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Promise;
+use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Validation;
@@ -46,24 +47,7 @@ Route::post('/register', function (){
 });
 
 
-//Create promise
-Route::post('/promiseform', function () {
-    $promise = request()->validate([
-        'title' => 'required',
-        'description' => 'required'
-    ]);
-
-    //Default values
-    $promise['user_id']= Auth::id();
-    $promise['public'] = true;
-    $promise['status'] = false;
-
-    //Cretion of promise
-    Promise::create($promise);
-    return redirect('/promises')->with('success', 'Your promise has been saved successfully');
-})->middleware('auth');
-
-
+//Show all promises
 Route::get('/promises', function () {
     return view('promises', [
         'promises' => Promise::all()->where('public', '=', '1')->sortByDesc('id')
@@ -100,22 +84,59 @@ Route::post('/login', function () {
     }
 })->middleware('guest');
 
+
+//Add new promise
 Route::get('/promiseform', function () {
     return view('promiseform');
 })->middleware('auth');
 
+//Create promise
+Route::post('/promiseform', function () {
+    $promise = request()->validate([
+        'title' => 'required',
+        'description' => 'required',
+        'public' => 'required'
+    ]);
 
+    //Default values
+    $promise['public']= request()->boolean(key: 'public');
+    $promise['user_id']= Auth::id();
+    $promise['status'] = false;
+
+    //Cretion of promise
+    Promise::create($promise);
+    return redirect('/promises')->with('success', 'Your promise has been saved successfully');
+})->middleware('auth');
+
+
+
+//Show account info
 Route::get('/account', function () {
     return view('account', [
     //    'account' => Promise::all()->where('user_id', "=", auth()->id())
-    'account' => Promise::all()
+    'account' => Promise::all(),
+    'count' => Promise::all()->count(),
     ]);
 })->middleware('auth');
 
 
-Route::get('/users', function () {
-    return view('users', [
-        'users' => User::all()
+
+//Planner test script
+Route::get('/planner', function(){
+    return view('planner');
+});
+
+Route::post('/planner', function(){
+    $task = request()->validate([
+        'title' => 'required',
+        'description' => 'required'
     ]);
 
+    //Default values
+    $task['promise_id'] = Auth::id();
+    $task['status'] = false;
+
+    //Cretion of promise
+    Task::create($task);
+    return redirect('/planner')->with('success', 'Your promise has been saved successfully');
 });

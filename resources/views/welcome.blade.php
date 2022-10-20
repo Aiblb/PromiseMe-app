@@ -17,7 +17,7 @@
       <img src="{{url('img/iconodos.png')}}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
+      <img src="{{url('img/Logo_Back_to-removebg-preview.png')}}" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">

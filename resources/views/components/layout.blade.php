@@ -38,7 +38,7 @@
             <div class="container-fluid" id="nav">
 
                 <div class="col-1 col-xs-2">
-                    <a class="navbar-brand p-0" href="#">
+                    <a class="navbar-brand p-0" href="{{url('/')}}">
                         <img src="{{ url('img/PromiseMeIcon.png') }}" width="55" height="55" class="me-2">
                     </a>
                 </div>

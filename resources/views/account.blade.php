@@ -10,9 +10,30 @@
             <p>Promises count: {{$count}}</p>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div>
-            <p>{{$account}}</p>
+    <br><hr><br>
+    <div class="row">
+    
+    @foreach ($account as $promise)
+
+
+    <div class="col-md-6 mb-5">
+        <div class="card" id="">
+            <div class="card-header">
+                {{auth()->user()->firstname}}
+            </div>
+            <div class="card-body">
+                <img src="{{url('img/BookExample.jpg')}}" class="card-img-top mb-3" alt="...">
+                <hr>
+                <h5 class="card-title">{{$promise->title}}</h5>
+              <small class="text-muted">{{$promise->created_at->diffForHumans()}}</small>
+            <p class="card-text">{{$promise->description}}</p>
+            </div>
+          </div>
+    </div>
+
+
+@endforeach
+</div>
         </div>
     </div>
 </x-layout>

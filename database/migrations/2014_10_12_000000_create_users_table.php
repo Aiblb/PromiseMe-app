@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->rememberToken();
             $table->timestamps();
+            $table->integer('avatar');
         });
     }
 

@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('username')->unique();
+            $table->integer('avatar');
             $table->rememberToken();
             $table->timestamps();
-            $table->integer('avatar');
         });
     }
 

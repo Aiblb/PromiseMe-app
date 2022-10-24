@@ -10,7 +10,7 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id', 'promise_id'];
+    protected $guarded = ['id'];
 
     public function promise(){
         return $this->belongsTo(Promise::class);

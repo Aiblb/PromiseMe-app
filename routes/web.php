@@ -24,6 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 //Registration routes
 Route::get('/register', function (){
     return view('register');
@@ -37,6 +38,8 @@ Route::post('/register', function (){
         'email' => 'required|email|max:255|unique:users,email',
         'password' => 'required|min:5'
     ]);
+
+    $data['avatar'] = 1;
 
     //Creation
     $user = User::create($data);
@@ -90,6 +93,7 @@ Route::get('/promiseform', function () {
     return view('promiseform');
 })->middleware('auth');
 
+
 //Create promise
 Route::post('/promiseform', function () {
     $promise = request()->validate([
@@ -113,8 +117,7 @@ Route::post('/promiseform', function () {
 //Show account info
 Route::get('/account', function () {
     return view('account', [
-    //    'account' => Promise::all()->where('user_id', "=", auth()->id())
-    'account' => Promise::all(),
+    'account' => Promise::all()->where('user_id', "=", auth()->id()),
     'count' => Promise::all()->count(),
     ]);
 })->middleware('auth');
@@ -123,20 +126,28 @@ Route::get('/account', function () {
 
 //Planner test script
 Route::get('/planner', function(){
-    return view('planner');
+    return view('planner', [
+        'promises' => Promise::all()->where('user_id', "=", auth()->id()),
+        'tasks' => Task::all(), //WAHT ->where('promise->tasks->user_id', '=', auth()->id())
+        response()->json(Task::all()),
+    ]);
 });
+
+
 
 Route::post('/planner', function(){
     $task = request()->validate([
         'title' => 'required',
-        'description' => 'required'
+        'description' => 'required',
+        'deadline' => 'required',
+        'promise_id' => 'required'
     ]);
 
     //Default values
-    $task['promise_id'] = Auth::id();
+
     $task['status'] = false;
 
     //Cretion of promise
     Task::create($task);
-    return redirect('/planner')->with('success', 'Your promise has been saved successfully');
+    return redirect('/planner')->with('success', 'Your task has been saved successfully');
 });

@@ -3,6 +3,11 @@ body{
 
 }
 
+#title{
+    color: white;
+    font-size:x-large;
+}
+
 #nav{
   background-color: #7b5f35;
   height: 5rem;
@@ -23,6 +28,14 @@ body{
 .card-title{
     margin-bottom: 0px !important;
 }
+
+
+@media (max-width: 800px) {
+    #title {
+      font-size: larger;
+    }
+  }
+
 
 
 

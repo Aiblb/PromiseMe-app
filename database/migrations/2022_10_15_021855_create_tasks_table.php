@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->foreignId('promise_id');
             $table->boolean('status');
+            $table->date('deadline');
             $table->timestamps();
         });
     }

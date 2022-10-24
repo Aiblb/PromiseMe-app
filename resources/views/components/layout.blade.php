@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
     <link rel="stylesheet" href="{{ url('css/style.css') }}">
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.css">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
 
-    <link rel="icon" type="image/png" href="{{url('img/PromiseMeIcon.png')}}">
+    <link rel="icon" type="image/png" href="{{ url('img/PromiseMeIcon.png') }}">
     <title>Promise Me</title>
 </head>
 
@@ -37,15 +37,15 @@
         <nav class="navbar navbar-expand-lg bg-light p-0 shadow mb-5">
             <div class="container-fluid" id="nav">
 
-                <div class="col-1 col-xs-2">
-                    <a class="navbar-brand p-0" href="{{url('/')}}">
+                <div class="col-1">
+                    <a class="navbar-brand p-0" href="{{ url('/') }}">
                         <img src="{{ url('img/PromiseMeIcon.png') }}" width="55" height="55" class="me-2">
                     </a>
                 </div>
 
                 <div
-                    class="col-9 offset-0 col-md-7 col-xs-9 offset-md-1 d-flex justify-content-start justify-content-md-center">
-                    <a class="navbar-brand p-0" href="#"><strong>Promise Me</strong></a>
+                    class="col-9 offset-0 col-md-7 offset-md-1 d-flex justify-content-center">
+                    <a class="navbar-brand p-0" href="{{ url('/') }}" id="title"><strong>Promise Me</strong></a>
                 </div>
 
                 <div class="col-2 navbar-expand" id="navbarSupportedContent">
@@ -78,7 +78,8 @@
 
                         <li class="nav-item">
                             @auth
-                                <a class="nav-link {!! getIfActive('/form') !!}" aria-current="page" href="{{ url('/account') }}">
+                                <a class="nav-link {!! getIfActive('/form') !!}" aria-current="page"
+                                    href="{{ url('/account') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                         fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -91,7 +92,8 @@
 
                         <li>
                             @auth
-                                <a class="nav-link {!! getIfActive('/') !!}" aria-current="page" href="{{ url('/planner') }}">
+                                <a class="nav-link {!! getIfActive('/form') !!}" aria-current="page"
+                                    href="{{ url('/planner') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                         fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
@@ -107,7 +109,7 @@
 
                         <li class="nav-item">
                             @auth
-                                <a class="nav-link {!! getIfActive('/') !!}" aria-current="page"
+                                <a class="nav-link {!! getIfActive('/form') !!}" aria-current="page"
                                     href="{{ url('/promiseform') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                         fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -117,7 +119,7 @@
                                     </svg>
                                 </a>
                             @else
-                                <a class="nav-link {!! getIfActive('/') !!}" aria-current="page"
+                                <a class="nav-link {!! getIfActive('/form') !!}" aria-current="page"
                                     href="{{ url('/register') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                         fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
@@ -133,7 +135,7 @@
 
                         <li class="nav-item">
                             @auth
-                                <a class="nav-link {!! getIfActive('/promise') !!}" aria-current="page"
+                                <a class="nav-link {!! getIfActive('/form') !!}" aria-current="page"
                                     href="{{ url('/promises') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                         fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
@@ -144,7 +146,7 @@
                                     </svg>
                                 </a>
                             @else
-                                <a class="nav-link {!! getIfActive('/') !!}" aria-current="page"
+                                <a class="nav-link {!! getIfActive('/form') !!}" aria-current="page"
                                     href="{{ url('/') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                         fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
@@ -174,7 +176,8 @@
         {{ $slot }}
     </div>
     <x-flashmessage />
-    <script src="{{asset('js/planner.js')}}" defer></script>
+
+    <script src="{{ asset('js/planner.js') }}" defer></script>
 </body>
 
 </html>

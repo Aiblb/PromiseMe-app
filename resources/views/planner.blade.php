@@ -69,28 +69,24 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Promise</th>
-                <th scope="col">Check</th>
+                <th scope="col">Task</th>
                 <th scope="col">Deadline</th>
             </tr>
         </thead>
         <tbody>
+        @foreach($tasks as $task)
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row">{{$task->id}}</th>
+                <td>{{$task->promise->description}}</td>
+                <td>{{$task->title}}</td>
+                
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  </div>
+                </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
     <!-- Button trigger modal -->
@@ -103,34 +99,32 @@
     <br>
     <hr><br>
     <p class="text-center col-md-6 aling-content-left">To do list</p>
-    <p>{{$tasks}}</p>
+    
     <table class="table">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Promise</th>
-                <th scope="col">Check</th>
+                <th scope="col">Task</th>
+                <th scope="col">Description</th>
                 <th scope="col">Deadline</th>
+                <th scope="col">Completed</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody>       
+
+            @foreach($tasks as $task)
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row">{{$task->id}}</th>
+                <td>{{$task->title}}</td>
+                <td>{{$task->description}}</td>
+                <td>{{$task->deadline}}</td>
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  </div>
+                </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Make Larry real</td>
-                <td>tomorrow</td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
 

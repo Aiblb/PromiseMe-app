@@ -128,8 +128,7 @@ Route::get('/account', function () {
 Route::get('/planner', function(){
     return view('planner', [
         'promises' => Promise::all()->where('user_id', "=", auth()->id()),
-        'tasks' => Task::all(), //WAHT ->where('promise->tasks->user_id', '=', auth()->id())
-        response()->json(Task::all()),
+        'tasks' => Auth::user()->tasks, //WAHT ->where('promise->tasks->user_id', '=', auth()->id())
     ]);
 });
 

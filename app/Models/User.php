@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function setPasswordAttribute($password){
         $this->attributes['password'] = bcrypt($password);
     }
+
+    public function tasks(){
+        return $this->hasManyThrough(Task::class, Promise::class);
+    }
 }

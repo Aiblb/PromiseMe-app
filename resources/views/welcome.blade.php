@@ -2,7 +2,7 @@
     <div class="text-center">
         <h1>Welcome to Promise Me!</h1>
         <p><br>
-        <p><br> We believe that in the recent years there has been a certain difficulty in achieving the objectives, or
+        <p class="mb-5"><br> We believe that in the recent years there has been a certain difficulty in achieving the objectives, or
             in this case, promises.
             In these times we don’t give the importance that the promises deserve.
             With our Project we want to give back the importance again to the promises we make to others and to
@@ -14,7 +14,7 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-8 ">
+        <div class="col-8">
 
 
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">

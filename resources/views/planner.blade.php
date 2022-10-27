@@ -13,9 +13,8 @@
         <div class="text-end">
 
             <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#event"
-                id="btnPromise">
-                Add task
-            </button>
+                id="btnColor">
+                Add task</button>
         </div>
 
         <!-- Modal -->
@@ -39,93 +38,87 @@
                                 <label for="">Select your promise</label>
                                 <select class="form-select" name="promise_id" aria-label="Default select example">
                                     @foreach ($promises as $promise)
-                                        <option value="{{$promise->id}}">{{ $promise->title }}</option>
+                                        <option value="{{ $promise->id }}">{{ $promise->title }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary" >Add now</button>
+                                <button type="submit" class="btn btn-primary" id="btnColor">Add now</button>
                             </div>
                         </form>
-
-
                     </div>
-
-
-
                 </div>
             </div>
         </div>
     </div>
 
-    <x-flashmessage/>
+    <x-flashmessage />
     <br>
     <hr><br>
-    <p class="text-center">Promise list</p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Promise</th>
-                <th scope="col">Task</th>
-                <th scope="col">Deadline</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($tasks as $task)
-            <tr>
-                <th scope="row">{{$task->id}}</th>
-                <td>{{$task->promise->description}}</td>
-                <td>{{$task->title}}</td>
-                
-                <td>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  </div>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-        id="btnPromise">
-        Add task
-    </button>
 
+    <div class="text-center">
+        <h2>Promise list</h2><br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Promise</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">Progress</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($tasks as $task)
+                    <tr>
+                        <th scope="row">{{ $task->id }}</th>
+                        <td>{{ $task->promise->description }}</td>
+                        <td>{{ $task->title }}</td>
+
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" aria-label="Success example"
+                                    style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
     <br>
     <hr><br>
-    <p class="text-center col-md-6 aling-content-left">To do list</p>
-    
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Task</th>
-                <th scope="col">Description</th>
-                <th scope="col">Deadline</th>
-                <th scope="col">Completed</th>
-            </tr>
-        </thead>
-        <tbody>       
 
-            @foreach($tasks as $task)
-            <tr>
-                <th scope="row">{{$task->id}}</th>
-                <td>{{$task->title}}</td>
-                <td>{{$task->description}}</td>
-                <td>{{$task->deadline}}</td>
-                <td>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  </div>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="text-center">
+        <h2>To do list</h2><br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Completed</th>
+                </tr>
+            </thead>
+            <tbody>
 
+                @foreach ($tasks as $task)
+                    <tr>
+                        <th scope="row">{{ $task->id }}</th>
+                        <td>{{ $task->title }}</td>
+                        <td>{{ $task->description }}</td>
+                        <td>{{ $task->deadline }}</td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </x-layout>

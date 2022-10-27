@@ -46,55 +46,6 @@ body{
     padding-bottom: 8px;
 }
 
-#post{
-    background-color: white;
-    border-radius: 10px;
-}
-
-.carita{
-    position: absolute;
-    width: 110px;
-    height: 100px;
-    left: 1306px;
-    top: 13px;
-
-}
-
-#imgPost{
-    display: inline-block;
-    width: 100%;
-}
-
-.carita{
-    position: absolute;
-    width: 115px;
-    height: 112px;
-    left: 1306px;
-    top: 13px;
-}
-
-#perfil.boton{
-    position: absolute;
-    width: 115px;
-    height: 112px;
-    left: 1306px;
-    top: 13px;
-    border-radius: 256px;
-}
-
-#boton.perfil{
-    position: absolute;
-    width: 90px;
-    height:90px;
-    left: 1306px;
-    top: 13px;
-
-}
-
-#btnPromise{
-  background-color: #632815;
-  border-color: #632815;
-}
 
 .bd-placeholder-img {
     font-size: 1.125rem;

@@ -7,20 +7,25 @@
             </h2>
         </div>
 
-        <form actions="{{ url('/promise') }}" method="POST" class="row g-3 needs-validation" novalidate>
+        <form actions="{{ url('/promise') }}" enctype="multipart/form-data" method="POST" class="row g-3 needs-validation" novalidate>
             @csrf
             <x-input type="text" label="Title" name="title" :required="true" />
             <x-input type="text" label="Description" name="description" :required="true" />
+
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Image for your promise</label>
+                <input name="image" class="form-control" type="file" id="formFile">
+            </div>
 
             <label for="">Choose the privacy option for your new promise</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="public" id="flexRadio1" value="true">
                 <label class="form-check-label" for="flexRadio1">Everyone can see this promise</label>
-              </div>
-              <div class="form-check">
+            </div>
+            <div class="form-check">
                 <input class="form-check-input" type="radio" name="public" id="flexRadio2" checked value="false">
                 <label class="form-check-label" for="flexRadio2">Let´s keep it private for now</label>
-              </div>
+            </div>
 
             <div class="col-12 text-end">
                 <button class="btn btn-outline-primary mt-4" id="btnColor" type="submit">Create new promise</button>
@@ -28,8 +33,6 @@
         </form>
     </div>
 
-    <x-flashmessage/>
+    <x-flashmessage />
 
 </x-layout>
-
-

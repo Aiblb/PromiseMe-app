@@ -26,11 +26,11 @@ Route::get('/', function () {
 
 
 //Registration routes
-Route::get('/register', function (){
+Route::get('/register', function () {
     return view('register');
 })->middleware('guest');
 
-Route::post('/register', function (){
+Route::post('/register', function () {
     $data = request()->validate([
         'firstname' => 'required',
         'lastname' => 'required',
@@ -58,7 +58,7 @@ Route::get('/promises', function () {
 })->middleware('auth');
 
 
-Route::get('/logout', function(){
+Route::get('/logout', function () {
     auth()->logout();
     //Send them to Promises page
     return redirect('/')->with('success', 'You have been logged out successfully');
@@ -77,12 +77,11 @@ Route::post('/login', function () {
     ]);
 
     //Attemps logs you in and checks password
-    if(auth()->attempt($data)){
+    if (auth()->attempt($data)) {
         session()->regenerate();
         //Send them to Promises page
-    return redirect('/promises')->with('success', 'You have been logged in successfully');
-    }
-    else{
+        return redirect('/promises')->with('success', 'You have been logged in successfully');
+    } else {
         return back()->withInput()->withErrors(['username' => 'The username provided could not be verified']);
     }
 })->middleware('guest');
@@ -103,12 +102,17 @@ Route::post('/promiseform', function () {
     ]);
 
     //Default values
-    $promise['public']= request()->boolean(key: 'public');
-    $promise['user_id']= Auth::id();
+    $promise['public'] = request()->boolean(key: 'public');
+    $promise['user_id'] = Auth::id();
     $promise['status'] = false;
 
-    //Cretion of promise
-    Promise::create($promise);
+    //Creation of promise
+    $newPromise = Promise::create($promise);
+
+    if (request()->hasFile('image')) {
+        request()->file('image')->storeAs('promiseImg', "$newPromise->id.png", 'public');
+    }
+
     return redirect('/promises')->with('success', 'Your promise has been saved successfully');
 })->middleware('auth');
 
@@ -117,15 +121,15 @@ Route::post('/promiseform', function () {
 //Show account info
 Route::get('/account', function () {
     return view('account', [
-    'account' => Promise::all()->where('user_id', "=", auth()->id()),
-    'count' => Promise::all()->count(),
+        'account' => Promise::all()->where('user_id', "=", auth()->id()),
+        'count' => Promise::all()->count(),
     ]);
 })->middleware('auth');
 
 
 
 //Planner test script
-Route::get('/planner', function(){
+Route::get('/planner', function () {
     return view('planner', [
         'promises' => Promise::all()->where('user_id', "=", auth()->id()),
         'tasks' => Auth::user()->tasks, //WAHT ->where('promise->tasks->user_id', '=', auth()->id())
@@ -134,7 +138,7 @@ Route::get('/planner', function(){
 
 
 
-Route::post('/planner', function(){
+Route::post('/planner', function () {
     $task = request()->validate([
         'title' => 'required',
         'description' => 'required',

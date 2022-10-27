@@ -175,6 +175,10 @@
     <div class="container">
         {{ $slot }}
     </div>
+
+    <footer>
+        
+    </footer>
     <x-flashmessage />
 
     <script src="{{ asset('js/planner.js') }}" defer></script>

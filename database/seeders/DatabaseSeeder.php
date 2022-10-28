@@ -62,21 +62,21 @@ class DatabaseSeeder extends Seeder
             'description' => 'Watch movies in English as practice',
             'promise_id' => 1,
             'status' => true,
-            'deadline' => fake()->date(),
+            'deadline' => '2022-10-30',
         ]);
         Task::factory()->create([
             'title' => 'Record audio',
             'description' => 'Record myself speaking in English to improve on my pronunciation',
             'promise_id' => 1,
             'status' => true,
-            'deadline' => fake()->date(),
+            'deadline' => '2022-11-03',
         ]);
         Task::factory()->create([
             'title' => 'Read books in English',
             'description' => 'Read books to get more English vocabulary',
             'promise_id' => 1,
             'status' => false,
-            'deadline' => fake()->date(),
+            'deadline' => '2023-03-15',
         ]);
 
         Task::factory()->create([
@@ -84,14 +84,14 @@ class DatabaseSeeder extends Seeder
             'description' => 'Seek for a routine on Youtube',
             'promise_id' => 2,
             'status' => true,
-            'deadline' => fake()->date(),
+            'deadline' => '2022-10-29',
         ]);
         Task::factory()->create([
             'title' => 'Drink water',
             'description' => 'Have a bottle of water always on my hands',
             'promise_id' => 2,
             'status' => true,
-            'deadline' => fake()->date(),
+            'deadline' => '2022-12-31',
         ]);
 
 
@@ -126,7 +126,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Practice plucking exercises',
             'promise_id' => 4,
             'status' => true,
-            'deadline' => fake()->date(),
+            'deadline' => '2022-11-18',
         ]);
 
         Task::factory()->create([
@@ -134,7 +134,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Learn some easy songs to start',
             'promise_id' => 4,
             'status' => false,
-            'deadline' => fake()->date(),
+            'deadline' => '2023-2-14',
         ]);
 
         Task::factory()->create([
@@ -142,7 +142,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Do all my stuff before to spend time with them',
             'promise_id' => 5,
             'status' => true,
-            'deadline' => fake()->date(),
+            'deadline' => '2022-11-1',
         ]);
 
 

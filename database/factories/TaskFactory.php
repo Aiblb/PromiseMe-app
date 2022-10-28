@@ -18,9 +18,11 @@ class TaskFactory extends Factory
     public function definition()
     {
         return [
+            'title' => fake()->sentence(),
             'description' => fake()->paragraph(),
             'promise_id' => Promise::factory(),
-            'status' => fake()->boolean()
+            'status' => fake()->boolean(),
+            'deadline' => fake()->date(),
         ];
     }
 }

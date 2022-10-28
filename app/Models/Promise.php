@@ -13,7 +13,8 @@ class Promise extends Model
     protected $guarded = ['id'];
 
     protected $appends = [
-        'image'
+        'image',
+        'completedPercentage'
     ];
 
     //needs to be call as an attribute
@@ -34,5 +35,16 @@ class Promise extends Model
             return "promiseImg/$this->id.png";
         }
         return null;
+    }
+
+    public function getCompletedPercentageAttribute(){
+        if($this->tasks->count() == 0){
+            return -1;
+        }
+
+        $array = $this->tasks->countBy(function ($task) {
+            return $task->status;
+        })->all();
+        return ((array_key_exists(1, $array) ? $array[1] : 0) / $this->tasks->count())*100;
     }
 }

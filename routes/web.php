@@ -36,10 +36,9 @@ Route::post('/register', function () {
         'lastname' => 'required',
         'username' => 'required|min:5|max:255|unique:users,username',
         'email' => 'required|email|max:255|unique:users,email',
-        'password' => 'required|min:5'
+        'password' => 'required|min:5',
+        'avatar' => 'required'
     ]);
-
-    $data['avatar'] = 1;
 
     //Creation
     $user = User::create($data);
@@ -121,7 +120,7 @@ Route::post('/promiseform', function () {
 //Show account info
 Route::get('/account', function () {
     return view('account', [
-        'account' => Promise::all()->where('user_id', "=", auth()->id()),
+        'account' => Promise::all()->where('user_id', "=", Auth::id())->sortByDesc('id'),
         'count' => Promise::all()->count(),
     ]);
 })->middleware('auth');
@@ -131,8 +130,9 @@ Route::get('/account', function () {
 //Planner test script
 Route::get('/planner', function () {
     return view('planner', [
-        'promises' => Promise::all()->where('user_id', "=", auth()->id()),
-        'tasks' => Auth::user()->tasks, //WAHT ->where('promise->tasks->user_id', '=', auth()->id())
+        'promises' => Promise::all()->where('user_id', "=", Auth::id()),
+        'tasks' => Auth::user()->tasks, //Using eloquent to access
+        'promises' => Auth::user()->promises
     ]);
 });
 
@@ -150,7 +150,14 @@ Route::post('/planner', function () {
 
     $task['status'] = false;
 
-    //Cretion of promise
+    //Creation of tasks
     Task::create($task);
     return redirect('/planner')->with('success', 'Your task has been saved successfully');
+});
+
+Route::get('/taskStatus/{task}', function(Task $task){
+    $task->status = !$task->status;
+    $task->save();
+
+    return redirect("/planner#CBTask$task->id");
 });

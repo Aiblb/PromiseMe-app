@@ -22,7 +22,7 @@ class PromiseFactory extends Factory
             'description' => fake()->paragraph(),
             'public' => fake()->boolean(),
             'user_id' => User::factory(),
-            'status' => '0'
+            'status' => false,
         ];
     }
 }

@@ -7,10 +7,10 @@
                 @foreach ($promises as $promise)
                     <div class="row justify-content-center">
                         <div class="col-md-12 mb-md-5 mb-4">
-                            <div class="card" id="">
+                            <div class="card shadow">
                                 <div class="card-header">
-                                    <img src="{{ url('img/avatar/' . auth()->user()->avatar . '.png') }}" height="30px" width="30px" class="rounded-circle">
-                                    {{ auth()->user()->firstname." ". auth()->user()->lastname}}
+                                    <img src="{{ url('img/avatar/' . $promise->user->avatar . '.png') }}" height="30px" width="30px" class="rounded-circle">
+                                    {{ $promise->user->firstname." ". $promise->user->lastname}}
                                 </div>
                                 <div class="card-body">
                                     @if ($promise->getImageAttribute() != null)
@@ -27,9 +27,9 @@
                     </div>
                 @endforeach
             </div>
-            <div class="col-md-3 ms-4">
 
-                <h4>Pending tasks</h4>
+            <div class="col-md-3 ms-4 mb-4 mb-md-0 order-md-last order-first">
+                <h3>Pending tasks</h3>
                 @foreach (Auth::user()->tasks as $task)
                     <div class="card-body mt-3">
                         @if (!$task->status)

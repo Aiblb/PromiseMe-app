@@ -17,7 +17,7 @@
 
         @foreach ($account as $promise)
             <div class="col-md-4 mb-5">
-                <div class="card">
+                <div class="card shadow-lg">
                     <div class="card-header">
                         {{ auth()->user()->firstname . ' ' . auth()->user()->lastname }}
                     </div>

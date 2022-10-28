@@ -33,7 +33,7 @@
             }
         @endphp
 
-        <nav class="navbar p-0 shadow">
+        <nav class="navbar fixed-top p-0 shadow">
             <div class="container-fluid pb-0 pb-md-2 pt-md-2" id="nav">
                 <div class="col-1">
                     <a class="navbar-brand p-0" href="{{ url('/') }}">
@@ -41,9 +41,9 @@
                     </a>
                 </div>
 
-                <div
-                    class="col-11 offset-0 col-md-7 offset-md-1 d-flex justify-content-center">
-                    <a class="navbar-brand p-0" href="{{ url('/') }}" id="title"><strong>Promise Me</strong></a>
+                <div class="col-11 offset-0 col-md-7 offset-md-1 d-flex justify-content-center">
+                    <a class="navbar-brand p-0" href="{{ url('/') }}" id="title"><strong>Promise
+                            Me</strong></a>
                 </div>
 
                 <div class="col-6 offset-3 col-md-2 offset-md-0 navbar-expand" id="navbarSupportedContent">
@@ -62,8 +62,7 @@
                                     </svg>
                                 </a>
                             @else
-                                <a class="nav-link {!! getIfActive('/form') !!}" aria-current="page"
-                                    href="{{ url('/') }}">
+                                <a class="nav-link {!! getIfActive('/form') !!}" aria-current="page" href="{{ url('/') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                         fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
@@ -133,7 +132,8 @@
 
                         <li class="nav-item">
                             @auth
-                                <a class="nav-link {!! getIfActive('form') !!}" aria-current="page" href="{{ url('/logout') }}">
+                                <a class="nav-link {!! getIfActive('form') !!}" aria-current="page"
+                                    href="{{ url('/logout') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                         fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
@@ -143,7 +143,8 @@
                                     </svg>
                                 </a>
                             @else
-                                <a class="nav-link {!! getIfActive('form') !!}" aria-current="page" href="{{ url('/login') }}">
+                                <a class="nav-link {!! getIfActive('form') !!}" aria-current="page"
+                                    href="{{ url('/login') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                         fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
@@ -162,15 +163,23 @@
 
     </header>
 
-    <div class="jumbotron vertical-center">
-
-        <div class="container">
-            {{ $slot }}
+    <div class="page-container">
+        <div class="jumbotron vertical-center">
+            <div class="container">
+                {{ $slot }}
+            </div>
         </div>
     </div>
-
-    <footer>
-    </footer>
+    
+    <div class="container">
+        <footer>
+            <div class="container">
+                <footer class="py-2 my-2 border-top">
+                    <p class="text-center text-muted mt-4">&copy; Promise Me - Expo 2022 Back to reality</p>
+                </footer>
+            </div>
+        </footer>
+    </div>
     <x-flashmessage />
 
     <script src="{{ asset('js/planner.js') }}" defer></script>

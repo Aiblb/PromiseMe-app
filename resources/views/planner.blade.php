@@ -71,7 +71,7 @@
             <tbody>
                 @foreach ($promises as $promise)
                     <tr>
-                        <th scope="row">{{ $promise->title }}</th>
+                        <td scope="row">{{ $promise->title }}</td>
                         <td>{{ $promise->description }}</td>
                         <td>
                             @if ($promise->completedPercentage == 100)
@@ -115,7 +115,7 @@
     <br><br>
     <hr><br><br>
 
-    <div class="text-center">
+    <div class="text-center mb-5">
         <h2>To do list</h2><br>
         <table class="table">
             <thead>

@@ -15,13 +15,13 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-10">
 
 
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ url('img/photoGroup.jpg') }}" class="d-block w-100 " alt="...">
+                    <img src="{{ url('img/photoGroup.png') }}" class="d-block w-100 " alt="...">
                 </div>
                 <div class="carousel-item">
                     <img src="{{ url('img/logoPromiseme.png') }}" class="d-block w-100" alt="...">

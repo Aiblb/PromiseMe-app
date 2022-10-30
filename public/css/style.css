@@ -32,6 +32,18 @@ body {
     }
 }
 
+
+.form-checkBox{
+    width: max-content;
+    margin: auto;
+}
+
+/*.form-check-input:valid {
+    box-shadow:0 0 0 0rem #d5552d !important;
+    background-color:  #3d190d !important;
+  }*/
+
+
 /*Navbar style*/
 #title {
     color: white;

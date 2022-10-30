@@ -1,27 +1,26 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
 
     let form = document.querySelector("form");
+    var plannerContainer = document.getElementById("planner");
 
-  var plannerContainer = document.getElementById('planner');
+    var planner = new FullCalendar.Calendar(plannerContainer, {
+        initialView: "dayGridMonth",
 
-  var planner = new FullCalendar.Calendar(plannerContainer, {
-    initialView: 'dayGridMonth',
+        headerToolbar: {
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth",
+        },
 
-    dateClick:function(data){
-    $("#event").modal("show");
-    }
-  });
-
-  planner.render("http://localhost/planner");
-
-
-
-  events: "",
-
+        events: {
+            url: baseURL + "/planner/tasks",
+        },
+        eventColor: '#ecefd2',
+        eventTextColor:'#4b4a49',
 
 
-  document.getElementById("btnSave").addEventListener("click", function(){
-    const formData = new FormData(form);
-  });
+    });
+
+    planner.render(baseURL + "/planner");
 
 });

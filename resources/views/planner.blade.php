@@ -6,7 +6,9 @@
                 <small class="text-muted">and stay tunned!</small>
             </h2>
         </div>
-        <div id="planner"></div>
+        <div id="planner">
+
+        </div>
 
 
         <!-- Button trigger modal -->
@@ -134,7 +136,7 @@
                         <td>{{ $task->description }}</td>
                         <td>{{ $task->deadline }}</td>
                         <td>
-                            <div class="form-check">
+                            <div class="form-check form-checkBox">
                                 <input class="form-check-input"
                                     onclick="location.href='{{ url("/taskStatus/$task->id") }}'" type="checkbox"
                                     value="" id="CBTask{{ $task->id }}"

@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.css">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
 
+    <script>
+        var baseURL = {!! json_encode(url('/'))!!}
+    </script>
+
     <link rel="icon" type="image/png" href="{{ url('img/PromiseMeIcon.png') }}">
     <title>Promise Me</title>
 </head>
@@ -170,7 +174,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="container">
         <footer>
             <div class="container">

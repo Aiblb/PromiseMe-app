@@ -12,6 +12,14 @@ class Task extends Model
 
     protected $guarded = ['id'];
 
+    protected $appends = ['start'];
+
+    protected $hidden = ['start'];
+
+    public function getStartAttribute(){
+        return $this->deadline;
+    }
+
     public function promise(){
         return $this->belongsTo(Promise::class);
     }

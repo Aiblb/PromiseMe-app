@@ -127,7 +127,7 @@ Route::get('/account', function () {
 
 
 
-//Planner test script
+//Show account info
 Route::get('/planner', function () {
     return view('planner', [
         'promises' => Promise::all()->where('user_id', "=", Auth::id()),
@@ -137,7 +137,7 @@ Route::get('/planner', function () {
 });
 
 
-
+//Create and store tasks
 Route::post('/planner', function () {
     $task = request()->validate([
         'title' => 'required',
@@ -155,9 +155,14 @@ Route::post('/planner', function () {
     return redirect('/planner')->with('success', 'Your task has been saved successfully');
 });
 
+//Change progress bar as it is clicked
 Route::get('/taskStatus/{task}', function(Task $task){
     $task->status = !$task->status;
     $task->save();
 
     return redirect("/planner#CBTask$task->id");
+});
+
+Route::get('/planner/tasks', function() {
+    return Auth::user()->tasks->makeHidden(['id', 'promise_id', 'status', 'deadline', 'created_at', 'updated_at', 'laravel_through_key'])->makeVisible('start')->toJson();
 });

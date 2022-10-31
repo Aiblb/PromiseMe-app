@@ -6,7 +6,7 @@
         </symbol>
     </svg>
 
-    <div class="alert alert-success d-flex alert-dismissible align-items-center fade show position-fixed bottom-0 end-0 me-3"
+    <div class="alert alert-success d-flex alert-dismissible align-items-center fade show position-fixed bottom-0 end-0 me-3 zindex-toast"
         role="alert">
         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
             <use xlink:href="#check-circle-fill" />
@@ -35,7 +35,7 @@
         </symbol>
     </svg>
 
-    <div class="alert alert-danger d-flex alert-dismissible align-items-center fade show position-fixed bottom-0 end-0 me-3"
+    <div class="alert alert-danger d-flex alert-dismissible align-items-center fade show position-fixed bottom-0 end-0 me-3 zindex-toast"
         role="alert">
         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
             <use xlink:href="#error-circle-fill" />

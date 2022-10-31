@@ -75,7 +75,15 @@ class DatabaseSeeder extends Seeder
             'avatar' => 4,
         ]);
 
-
+        User::factory()->create([
+            'firstname' => 'Admin',
+            'lastname' => 'A',
+            'username' => 'admin',
+            'email' => 'admin.a2025@poma.superate.org.sv',
+            'password' => 'admin',
+            'remember_token' => Str::random(10),
+            'avatar' => 6,
+        ]);
 
 
         //User 2 Promise 1

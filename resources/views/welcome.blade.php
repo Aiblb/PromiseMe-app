@@ -18,7 +18,7 @@
         <div class="col-10">
 
 
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade zindex-dropdown" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="{{ url('img/photoGroup.png') }}" class="d-block w-100 " alt="...">

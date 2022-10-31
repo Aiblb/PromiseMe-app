@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Validation;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,16 @@ use Illuminate\Validation\Rule;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('refreshDB', function(){
+    if(Auth::user()->username == 'admin'){
+        Artisan::call('migrate:refresh --seed');
+        auth()->logout();
+        return redirect('/')->with('success', 'DB has been refreshed');
+    }
+    auth()->logout();
+    return redirect('/')->with('error', 'Try again');;
+})->middleware('auth');
 
 Route::get('/', function () {
     return view('welcome');

@@ -38,14 +38,14 @@
         @endphp
 
         <nav class="navbar fixed-top p-0 shadow">
-            <div class="container-fluid pb-0 pb-md-2 pt-md-2" id="nav">
+            <div class="container-fluid p-0 pb-md-2 pt-md-2 justify-content-start" id="nav">
                 <div class="col-1">
                     <a class="navbar-brand p-0" href="{{ url('/') }}">
-                        <img src="{{ url('img/PromiseMeIcon.png') }}" width="55" height="55" class="me-2">
+                        <img src="{{ url('img/PromiseMeIcon.png') }}" width="55" height="55" class="mx-2">
                     </a>
                 </div>
 
-                <div class="col-11 offset-0 col-md-7 offset-md-1 d-flex justify-content-center">
+                <div class="col-10 offset-0 col-md-8 offset-md-1 text-center">
                     <a class="navbar-brand p-0" href="{{ url('/') }}" id="title"><strong>Promise
                             Me</strong></a>
                 </div>

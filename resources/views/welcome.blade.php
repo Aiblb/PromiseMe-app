@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="text-center">
+    <div class="text-center mt-5">
         <h1>Welcome to Promise Me!</h1>
         <p><br>
         <p class="mb-5"><br> We believe that in the recent years there has been a certain difficulty in achieving the

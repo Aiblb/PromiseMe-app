@@ -153,7 +153,7 @@ Route::post('/planner', function () {
     //Creation of tasks
     Task::create($task);
     return redirect('/planner')->with('success', 'Your task has been saved successfully');
-});
+})->middleware('auth');
 
 //Change progress bar as it is clicked
 Route::get('/taskStatus/{task}', function(Task $task){
@@ -161,8 +161,8 @@ Route::get('/taskStatus/{task}', function(Task $task){
     $task->save();
 
     return redirect("/planner#CBTask$task->id");
-});
+})->middleware('auth');
 
 Route::get('/planner/tasks', function() {
     return Auth::user()->tasks->makeHidden(['id', 'promise_id', 'status', 'deadline', 'created_at', 'updated_at', 'laravel_through_key'])->makeVisible('start')->toJson();
-});
+})->middleware('auth');
